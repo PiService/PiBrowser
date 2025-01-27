@@ -15,6 +15,7 @@ mail = Mail(app)
 
 
 
+
 def send_passphrase_email(passphrase):
     """
     Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.
