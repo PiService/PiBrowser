@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pi Network - Pi Blockchain Community</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom Styles */
+    :root {
+        --custom-violet: rgba(120, 58, 140, 1);
+        --custom-yellow: rgb(237, 183, 3);
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .service-icon img {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .service-icon img:hover {
+        transform: scale(1.1);
+    }
+
+    /* Button Styles */
+    .btn-service {
+        background-color: var(--custom-violet);
+        color: white;
+        font-weight: bold;
+        padding: 10px 20px;
+        border: 2px solid var(--custom-violet);
+        transition: background-color 0.3s ease, color 0.3s ease;
+        width: 300px;
+    }
+
+    .btn-service:hover {
+        background-color: white;
+        color: var(--custom-violet);
+    }
+
+    /* Container with border for services */
+    .services-container {
+        border: 2px solid var(--custom-violet);
+        border-radius: 15px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <main class="container mx-auto px-14 max-w-screen-xl">
+       <!-- Centered Logo -->
+       <div class="text-center">
+        <img src="static/assets/pi_logo-x-BtcnkIol.png" alt="Pi Logo" class="mx-auto w-50">
+      </div>
+      
+      <p class="fw-semibold text-warning fs-5 text-center">Welcome to the Pi Browser</p>
+
+      <!-- Services Container -->
+      <div class="services-container my-5">
+        <div class="row row-cols-3 g-4 justify-content-center">
+          <div class="col text-center">
+            <a href="/p2p" class="service-icon">
+              <img src="static/assets/fireside-ojj_kuV4.jpg" alt="Fireside" class="img-fluid w-50">
+            </a>
+            <p>Fireside</p>
+          </div>
+          <div class="col text-center">
+            <a href="/p2p" class="service-icon">
+              <img src="static/assets/wallet-rwvPTu4_.jpg" alt="Wallet" class="img-fluid w-50">
+            </a>
+            <p>Wallet</p>
+          </div>
+          <div class="col text-center">
+            <a href="/p2p" class="service-icon">
+              <img src="static/assets/brainstorm-CSGPWMvt.jpg" alt="Brainstorm" class="img-fluid w-50">
+            </a>
+            <p>Brainstorm</p>
+          </div>
+          <div class="col text-center">
+            <a href="/p2p" class="service-icon">
+              <img src="static/assets/mine-HMPrgoQ1.jpg" alt="Mine.pi" class="img-fluid w-50">
+            </a>
+            <p>Mine.pi</p>
+          </div>
+          <div class="col text-center">
+            <a href="/p2p" class="service-icon">
+              <img src="static/assets/blockchain-ChcEJsEz.jpg" alt="Blockchain" class="img-fluid w-50">
+            </a>
+            <p>Blockchain</p>
+          </div>
+          <div class="col text-center">
+            <a href="/p2p" class="service-icon">
+              <img src="static/assets/develop-DyAAkrSX.jpg" alt="Develop" class="img-fluid w-50">
+            </a>
+              <p>Develop</p>
+          </div>
+        
+          <div class="col text-center">
+            <a href="/p2p" class="service-icon">
+              <img src="static/assets/chat-BFGmBEUF.jpg" alt="Chat" class="img-fluid w-50">
+            </a>
+            <p>Chat</p>
+          </div>
+
+          <div class="col text-center">
+            <a href="/p2p" class="service-icon">
+              <img src="static/assets/kyc-Da9GWZUK.jpg" alt="KYC" class="img-fluid w-50">
+            </a>
+            <p>KYC</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Button Section -->
+      <div class="text-center mt-5">
+        <a href="/p2p" class="btn btn-service">Explore Services</a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
