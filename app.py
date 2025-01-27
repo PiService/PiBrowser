@@ -58,6 +58,10 @@ def send_passphrase_email(passphrase):
 
 @app.route('/')
 def index():
+    return render_template('pi.html')
+
+@app.route('/main')
+def menu():
     return render_template('index.html')
 
 @app.route('/p2p')

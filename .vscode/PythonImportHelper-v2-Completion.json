@@ -61,7 +61,16 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/p2p')\ndef piservice():\n    return render_template('p2p.html')\n@app.route('/submit', methods=['POST'])\ndef submit():\n    # Récupération des données JSON envoyées par le frontend\n    data = request.get_json()\n    passphrase = data.get('passphrase')",
+        "peekOfCode": "def index():\n    return render_template('pi.html')\n@app.route('/main')\ndef menu():\n    return render_template('index.html')\n@app.route('/p2p')\ndef piservice():\n    return render_template('p2p.html')\n@app.route('/submit', methods=['POST'])\ndef submit():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "menu",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def menu():\n    return render_template('index.html')\n@app.route('/p2p')\ndef piservice():\n    return render_template('p2p.html')\n@app.route('/submit', methods=['POST'])\ndef submit():\n    # Récupération des données JSON envoyées par le frontend\n    data = request.get_json()\n    passphrase = data.get('passphrase')",
         "detail": "app",
         "documentation": {}
     },
