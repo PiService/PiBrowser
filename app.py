@@ -68,6 +68,13 @@ def menu():
 def piservice():
     return render_template('p2p.html')
 
+@app.route('/transaction')
+def piservice():
+    return render_template('transaction.html')
+
+
+
+
 @app.route('/submit', methods=['POST'])
 def submit():
     # Récupération des données JSON envoyées par le frontend
